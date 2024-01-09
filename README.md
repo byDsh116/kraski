@@ -1,1 +1,1 @@
-# kraski-studio
+# kraski
