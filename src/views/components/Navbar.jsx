@@ -16,13 +16,13 @@ module.exports = function Navbar() {
                             <a className="navbar-brand" href="/vacancies">Вакансии</a>
                             <a className="navbar-brand" href="/blog">Блог</a>
 
+                            <a href="/reg/user" className="navbar-brand"> lk</a>
 
                         </li>
                     </ul>
-                    <form className="d-flex">
+                    <form className="">
                         {/* <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search" /> */}
                         <button className="btn btn-outline-success" type="submit">Search</button>
-                        <button className="btn btn-outline-success" type="submit"><a href='/user/reg' > lk</a></button>
 
                     </form>
                 </div>

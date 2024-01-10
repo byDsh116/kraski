@@ -2,7 +2,7 @@ const React = require('react')
 
 module.exports = function NavbarTop() {
     return (
-        <nav class="nav nav-pills nav-justified">
+        <nav className="nav nav-pills nav-justified">
 
             <p className='adres'>Адрес шоурума: Москва, Пятницкая 54 стр 1</p>
             <span className="topbar-work-time">Ежедневно с 9:00 до 21:00</span>
