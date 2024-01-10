@@ -60,3 +60,12 @@
     padding: 70px;
     max-width: 100%;
 }
+
+.reg-form{
+    width: max-content;
+    width: 30%;
+}
+
+.page {
+    margin-top: 30px;
+}

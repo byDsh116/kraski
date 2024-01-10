@@ -34,7 +34,7 @@ app.use(express.json());
 // app.use(expressSession(storeConfig));
 app.use(morgan('dev'));
 app.use('/', indexRouter);
-app.use('/reg', userRouter); // почему без второго слеша не работает?
+app.use('/user', userRouter); // почему без второго слеша не работает?
 
 app.listen(PORT, () => {
   console.log(`SERVER STARTED ON PORT===> ${PORT}`);
