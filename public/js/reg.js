@@ -19,12 +19,15 @@ form.addEventListener('submit', async (e) => {
     body: JSON.stringify(formData),
   });
   if (response.status === 200) {
-    window.location.href = ' http://localhost:3000/';
-    // const result = await response.json;
-    // const succesDiv = document.createElement('div');
-    // succesDiv.innerHTML = `
-    //   <h1> ${result.name} you are succes registration</h1>
-    //   `;
-    // homeDiv.appendChild(succesDiv);
+    window.location.href = ' http://localhost:3000/user/account';
+  } else {
+    console.log('error');
   }
 });
+
+// const result = await response.json;
+// const succesDiv = document.createElement('div');
+// succesDiv.innerHTML = `
+//   <h1> ${result.name} you are succes registration</h1>
+//   `;
+// homeDiv.appendChild(succesDiv);
