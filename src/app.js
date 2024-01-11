@@ -15,7 +15,7 @@ const { PORT } = process.env;
 const storeConfig = {
   name: 'Dsh',
   store: new FileStore(),
-  secret: 'lalala',
+  secret: process.env.SESSION_SECRET ?? 'Session',
   resave: false,
   saveUninitialized: false,
   cookie: {

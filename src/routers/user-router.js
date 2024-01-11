@@ -1,4 +1,5 @@
 const router = require('express').Router();
+const bcrypt = require('bcrypt');
 const renderTemplate = require('../lib/renderTemplate');
 const Registration = require('../views/pages/Registration');
 const { User } = require('../../db/models');
@@ -28,6 +29,7 @@ router.post('/login', async (req, res) => {
     const user = await User.findOne({ where: { email } });
     if (user.password === password) {
       console.log(user);
+      res.session.user = user;
       res.json(user);
     } else {
       res.redirect('/login');
@@ -54,9 +56,12 @@ router.post('/login', async (req, res) => {
 router.post('/reg', async (req, res) => {
   const { name, email, password } = req.body;
   try {
-    const user = await User.create({ name, email, password });
-    const userData = structuredClone(user.get({ plain: true }));
-    req.session.user = userData;
+    const hash = await bcrypt.hash(password, 10);
+    const user = await User.create({ name, email, password: hash });
+    console.log(req.session);
+    // const userData = structuredClone(user.get({ plain: true }));
+    // req.session.user = userData;
+    req.session.email = user.email;
     res.json(userData);
   } catch (error) {
     console.log('ERROR:', error);
