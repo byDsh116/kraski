@@ -4,8 +4,10 @@ const Layout = require('../Layout')
 module.exports = function Login() {
     return (
         <Layout>
+            <script defer src="/js/login.js" />
+
             <link rel="stylesheet" href="../css/style.css" />
-            <form>
+            <form className='login-form'>
                 <div className="mb-3">
                     <label for="exampleInputEmail1" className="form-label">Email address</label>
                     <input type="email" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" />
