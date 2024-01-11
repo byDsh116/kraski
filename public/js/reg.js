@@ -1,8 +1,5 @@
-console.log('reg-form');
-
 const form = document.querySelector('.reg-form');
 const homeDiv = document.querySelector('.home');
-console.log(form);
 
 form.addEventListener('submit', async (e) => {
   e.preventDefault();

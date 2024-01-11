@@ -16,7 +16,7 @@ module.exports = function Delivery() {
                         </span>
                         <span className="breadcrumbs-page">Доставка</span>
                     </div>
-                    <div class="page">
+                    <div className="page">
                     </div>
                 </div>
 
