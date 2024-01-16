@@ -85,3 +85,29 @@
 .entry-container{
     padding: 3% 0 4% 15%;
 }
+
+.acc-div{
+    padding: 2%;
+    margin: 2%;
+}
+
+.acc-input_div{
+    display: table-caption;
+    width: max-content;
+}
+
+.acc-input {
+    margin: 2%;
+    padding:10px;
+    width: 60%;
+    border: 2px solid #eeeeee;
+    border-radius: 1%;
+}
+
+.acc_btn-div{
+    margin: 2% 2%;
+}
+
+.acc_btn{
+    margin: 2% 0% 2%;
+}

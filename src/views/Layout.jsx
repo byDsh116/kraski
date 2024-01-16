@@ -3,7 +3,7 @@ const Navbar = require('./components/Navbar');
 const NavbarTop = require('./components/NavbarTop');
 // const Footer = require('./components/Footer');
 
-module.exports = function Layout({ children }) {
+module.exports = function Layout({ children, email }) {
     return (
         <html lang="en">
             <head>
@@ -18,7 +18,7 @@ module.exports = function Layout({ children }) {
 
             <body>
                 <NavbarTop />
-                <Navbar />
+                <Navbar email={email} />
                 <div> {children} </div>
                 {/* <Footer /> */}
 

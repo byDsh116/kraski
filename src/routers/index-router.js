@@ -8,7 +8,8 @@ const Main = require('../views/pages/Main');
 const Vacancies = require('../views/pages/Vacancies');
 
 router.get('/', async (req, res) => {
-  renderTemplate(Main, {}, res);
+  const { user } = req.session;
+  renderTemplate(Main, { email: user ? user.email : undefined }, res);
 });
 
 router.get('/catalog', async (req, res) => {

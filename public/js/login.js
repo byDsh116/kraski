@@ -1,13 +1,12 @@
-const form = document.querySelector('.login-form');
+const formLogin = document.querySelector('.login-form');
 // const accDiv = document.querySelector('.acc-div');
 
 formLogin.addEventListener('submit', async (e) => {
   e.preventDefault();
-  // const formData = {
-  //   [e.target.email.name]: e.target.email.value,
-  //   [e.target.password.name]: e.target.password.value,
-  // };
-  const data = new FormData(form);
+  const formData = {
+    [e.target.email.name]: e.target.email.value,
+    [e.target.password.name]: e.target.password.value,
+  };
   const response = await fetch('http://localhost:3000/user/login', {
     method: 'POST',
     headers: {
@@ -15,11 +14,9 @@ formLogin.addEventListener('submit', async (e) => {
     },
     body: JSON.stringify(formData),
   });
-
   if (response.status === 200) {
-    const userData = await response.json();
-
-    window.location.href = `http://localhost:3000/user/account`;
+    console.log(await response.json());
+    window.location.href = ' http://localhost:3000/user/account';
   } else {
     console.log('error');
   }

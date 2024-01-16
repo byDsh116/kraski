@@ -71,7 +71,7 @@ require('dotenv').config()
     ** DATABASE CONNECT **
 
 npx sequelize-cli model:generate --name User --attributes name:string,email:string,password:string
-npx sequelize-cli model:generate --name party --attributes name:string,description:string,date:date
+npx sequelize-cli model:generate --name Animals --attributes kind:string,name:string,photo:string,farmId:integer
 npx sequelize-cli model:generate --name UserParty --attributes userId:integer,partyId:integer
 ; связываю юзера с пати 
 
@@ -83,7 +83,7 @@ allowNull: false,
 npx sequelize db:migrate
 
 потом сиды
-npx sequelize seed:generate --name Users
+npx sequelize seed:generate --name Animals
 
 после засеивания сидов 
 npx sequelize db:seed:all

@@ -18,6 +18,13 @@ router.get('/login', async (req, res) => {
   renderTemplate(Login, {}, res);
 });
 
+router.get('/logout', async (req, res) => {
+  req.session.destroy((res) => {
+    console.log('session destroyed', res);
+  });
+  res.redirect('/account/entry');
+});
+
 router.get('/account', async (req, res) => {
   const { user } = req.session;
   renderTemplate(Account, { user }, res);
@@ -27,10 +34,11 @@ router.post('/login', async (req, res) => {
   const { email, password } = req.body;
   try {
     const user = await User.findOne({ where: { email } });
-    if (user.password === password) {
-      console.log(user);
-      res.session.user = user;
-      res.json(user);
+    const checkPass = await bcrypt.compare(password, user.password);
+    // console.log(user.password, password);
+    if (checkPass) {
+      req.session.user = user; //===dasha@gmail.com
+      res.status(200).send(user);
     } else {
       res.redirect('/login');
     }
@@ -40,6 +48,8 @@ router.post('/login', async (req, res) => {
     res.sendStatus(400);
   }
 });
+
+
 
 // router.post('/reg', async (req, res) => {
 //   const { name, email, password } = req.body;
@@ -58,21 +68,21 @@ router.post('/reg', async (req, res) => {
   try {
     const hash = await bcrypt.hash(password, 10);
     const user = await User.create({ name, email, password: hash });
-    console.log(req.session);
-    // const userData = structuredClone(user.get({ plain: true }));
-    // req.session.user = userData;
-    req.session.email = user.email;
+    const userData = structuredClone(user.get({ plain: true }));
+    req.session.user = userData;
     res.json(userData);
   } catch (error) {
     console.log('ERROR:', error);
     res.sendStatus(400);
   }
 });
-
 router.delete(`/:id`, async (req, res) => {
   try {
-    const targetUser = User.findByPk(req.params.id);
+    const targetUser = await User.findByPk(req.params.id);
     await targetUser.destroy();
+    req.session.destroy((res) => {
+      console.log('session destroyed', res);
+    });
     res.sendStatus(200);
   } catch (error) {
     console.log(error);
